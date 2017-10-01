@@ -3,11 +3,13 @@ require 'wrong'
 include Wrong
 
 =begin
-Setup Instructions
+
+Setup Requirements
 ------------------
 
 Ruby Version: 2.3.1
 Selenium Webdriver v 3.6.0
+Chromedriver
 'Wrong' Assertion Library 'https://github.com/sconover/wrong'
 
 =end
