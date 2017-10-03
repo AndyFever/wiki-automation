@@ -1,8 +1,10 @@
 require 'selenium-webdriver'
 require 'wrong'
 require 'pry'
-include Wrong
 require_relative 'test_data'
+require_relative 'functions'
+include Wrong
+
 =begin
 
 Setup Requirements
@@ -37,14 +39,8 @@ run do
     searchBox = @driver.find_element(:css, '#searchInput')
     searchBox.send_keys(test[:search_term])
     select = @driver.find_element(:css, '#searchLanguage')
-    drop_down = select.find_elements(:tag_name, "option")
-    drop_down.each do |option|
-      if option.text == test[:language]
-        option.click
-        break
-      end
-    end
-
+    @drop_down = select.find_elements(:tag_name, "option")
+    select_dropdown(@drop_down, test[:language])
     @driver.find_element(:xpath, '//*[@id="search-form"]/fieldset/button').click
 
     # Check the fist heading matches the search string
